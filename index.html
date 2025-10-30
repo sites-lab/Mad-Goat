@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Goat Coffee - Cafenea Retro în București</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --wood-dark: #8B4513;
+            --wood-medium: #A0522D;
+            --wood-light: #DEB887;
+            --retro-red: #B22222;
+            --retro-cream: #F5F5DC;
+            --retro-brown: #654321;
+            --retro-gold: #DAA520;
+            --text-dark: #2F1B0C;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--retro-cream);
+            background-image: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(139,69,19,0.03)"/></svg>');
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(to bottom, var(--wood-dark) 0%, var(--wood-medium) 100%);
+            border-bottom: 5px solid var(--retro-gold);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--retro-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--wood-dark);
+            font-size: 28px;
+            font-weight: bold;
+            border: 3px solid var(--retro-red);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--retro-cream);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+        }
+
+        .logo-text span {
+            color: var(--retro-gold);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--retro-cream);
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-family: 'Georgia', serif;
+        }
+
+        .nav-links a:hover {
+            background: var(--retro-gold);
+            color: var(--wood-dark);
+            transform: translateY(-2px);
+        }
+
+        .cart-btn {
+            background: var(--retro-red);
+            color: var(--retro-cream);
+            border: 2px solid var(--retro-gold);
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+        }
+
+        .cart-btn:hover {
+            background: var(--retro-gold);
+            color: var(--wood-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(218, 165, 32, 0.4);
+        }
+
+        .cart-count {
+            background: var(--wood-dark);
+            color: var(--retro-cream);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            border: 2px solid var(--retro-gold);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--retro-cream);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: 
+                linear-gradient(rgba(139, 69, 19, 0.7), rgba(101, 67, 33, 0.8)),
+                url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--retro-cream);
+            margin-top: 100px;
+            position: relative;
+            border-bottom: 10px solid var(--wood-dark);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 25px;
+            color: var(--retro-cream);
+            font-weight: 800;
+            letter-spacing: 3px;
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 35px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--retro-gold);
+            color: var(--wood-dark);
+            padding: 16px 40px;
+            border: 3px solid var(--retro-red);
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Georgia', serif;
+        }
+
+        .btn:hover {
+            background: var(--retro-red);
+            color: var(--retro-cream);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(178, 34, 34, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            border-bottom: 5px solid var(--wood-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 20px;
+            color: var(--wood-dark);
+            font-weight: 800;
+            font-family: 'Georgia', serif;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 6px;
+            background: var(--retro-red);
+            border-radius: 3px;
+        }
+
+        .section-title p {
+            font-size: 20px;
+            color: var(--retro-brown);
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--retro-cream) 0%, #F0E6D2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="rgba(139,69,19,0.1)" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--wood-dark);
+            font-family: 'Georgia', serif;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--retro-brown);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 20px 20px 60px rgba(139, 69, 19, 0.3);
+            border: 8px solid var(--wood-medium);
+            position: relative;
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 3px solid var(--retro-gold);
+            border-radius: 25px;
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu Section */
+        .menu {
+            background: 
+                linear-gradient(45deg, var(--wood-light) 0%, var(--retro-cream) 100%),
+                url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="rgba(139,69,19,0.05)" fill-rule="evenodd"><circle cx="30" cy="30" r="5"/></g></svg>');
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .category-btn {
+            background: var(--wood-medium);
+            border: 3px solid var(--retro-gold);
+            color: var(--retro-cream);
+            padding: 15px 32px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            box-shadow: 0 6px 15px rgba(139, 69, 19, 0.3);
+            font-family: 'Georgia', serif;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--retro-red);
+            color: var(--retro-cream);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(178, 34, 34, 0.4);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-category {
+            display: none;
+        }
+
+        .menu-category.active {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-item {
+            background: var(--retro-cream);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 15px 15px 40px rgba(139, 69, 19, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            border: 5px solid var(--wood-light);
+        }
+
+        .menu-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--retro-red);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover:before {
+            transform: scaleX(1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 25px 25px 60px rgba(139, 69, 19, 0.4);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-bottom: 5px solid var(--wood-medium);
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 30px;
+            position: relative;
+            background: linear-gradient(to bottom, var(--retro-cream) 0%, #F8F4E9 100%);
+        }
+
+        .menu-item h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--wood-dark);
+            font-family: 'Georgia', serif;
+        }
+
+        .price {
+            color: var(--retro-red);
+            font-weight: 800;
+            font-size: 24px;
+            font-family: 'Georgia', serif;
+        }
+
+        .menu-item p {
+            margin-bottom: 20px;
+            color: var(--retro-brown);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .order-btn {
+            background: var(--wood-dark);
+            color: var(--retro-cream);
+            border: 2px solid var(--retro-gold);
+            padding: 14px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: 700;
+            font-size: 17px;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+        }
+
+        .order-btn:hover {
+            background: var(--retro-red);
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(178, 34, 34, 0.4);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--wood-medium) 0%, var(--wood-dark) 100%);
+            color: var(--retro-cream);
+            position: relative;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(218,165,32,0.1)"/></svg>');
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 70px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-details {
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(218, 165, 32, 0.1);
+        }
+
+        .contact-item:hover {
+            transform: translateX(15px);
+            background: rgba(218, 165, 32, 0.2);
+        }
+
+        .contact-item i {
+            width: 60px;
+            height: 60px;
+            background: var(--retro-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            color: var(--wood-dark);
+            transition: all 0.3s ease;
+            font-size: 24px;
+            border: 3px solid var(--retro-red);
+        }
+
+        .contact-item:hover i {
+            background: var(--retro-red);
+            color: var(--retro-cream);
+            transform: scale(1.1);
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--retro-gold);
+            font-size: 18px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px 25px;
+            border: 3px solid var(--retro-gold);
+            border-radius: 15px;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            background: rgba(245, 245, 220, 0.9);
+            font-family: 'Georgia', serif;
+        }
+
+        .form-control:focus {
+            border-color: var(--retro-red);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(178, 34, 34, 0.2);
+            transform: translateY(-3px);
+            background: var(--retro-cream);
+        }
+
+        textarea.form-control {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--wood-dark);
+            color: var(--retro-cream);
+            padding: 80px 0 30px;
+            border-top: 10px solid var(--retro-gold);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            flex: 1;
+            margin-right: 50px;
+        }
+
+        .footer-column:last-child {
+            margin-right: 0;
+        }
+
+        .footer-column h3 {
+            color: var(--retro-gold);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            font-size: 24px;
+            font-family: 'Georgia', serif;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--retro-red);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(218, 165, 32, 0.2);
+            border-radius: 50%;
+            color: var(--retro-gold);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 20px;
+            border: 2px solid var(--retro-gold);
+        }
+
+        .social-links a:hover {
+            background: var(--retro-red);
+            color: var(--retro-cream);
+            transform: translateY(-8px) scale(1.1);
+            border-color: var(--retro-red);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 2px solid rgba(218, 165, 32, 0.3);
+            font-size: 16px;
+            color: var(--wood-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--wood-dark);
+                flex-direction: column;
+                padding: 120px 30px 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                z-index: 1001;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .footer-column {
+                margin-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .hero {
+                margin-top: 80px;
+                height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-icon">🐐</div>
+                    <div class="logo-text">MAD <span>GOAT</span></div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#about">Povestea Noastră</a></li>
+                    <li><a href="#menu">Meniu Retro</a></li>
+                    <li><a href="#contact">Vizitează-ne</a></li>
+                    <li>
+                        <button class="cart-btn" id="cartButton">
+                            <i class="fas fa-shopping-cart"></i>
+                            Coș
+                            <span class="cart-count" id="cartCount">0</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>MAD GOAT COFFEE</h1>
+                <p>O călătorie retro în lumea cafelei de specialitate. Arome autentice, atmosferă vintage, pasiune de altă dată.</p>
+                <a href="#menu" class="btn">Descoperă Meniul Retro</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Povestea Caprei Nebune</h2>
+                <p>De unde a început legenda...</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>O Cafenea cu Istorie</h3>
+                    <p>Mad Goat Coffee a renăscut din pasiunea pentru cafelele de specialitate și nostalgia vremurilor de altădată. Într-o clădire veche din centrul Bucureștiului, am transformat un spațiu istoric în cel mai autentic colț retro de cafea.</p>
+                    <p>Fiecare detaliu din Mad Goat spune o poveste - de la mobilierul din lemn masiv restaurat, până la echipamentele vintage de prăjire. Aducem în prim-plan arta pierdută a preparării cafelei, combinând tehnici tradiționale cu boabe de specialitate.</p>
+                    <p>Numele nostru vine de la legenda caprelor care au descoperit cafeaua - iar noi continuăm această aventură cu aceeași curiozitate și pasiune nebunească!</p>
+                    <a href="#contact" class="btn">Vino să ne cunoști</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Interiorul Mad Goat Coffee">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meniu Retro</h2>
+                <p>Arome clasice cu un twist modern</p>
+            </div>
+            
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="cafea-retro">Cafea Retro</button>
+                <button class="category-btn" data-category="ceai-vintage">Ceaiuri Vintage</button>
+                <button class="category-btn" data-category="specialitati">Specialități Mad Goat</button>
+                <button class="category-btn" data-category="gustari">Gustări Retro</button>
+            </div>
+
+            <!-- Cafea Retro Category -->
+            <div class="menu-category active" id="cafea-retro">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Espresso Vintage">
+                        <div class="menu-item-content">
+                            <h3>Espresso Vintage <span class="price">16 lei</span></h3>
+                            <p>Cafea puternică preparată în stil clasic. Boabe prăjite medium-dark pentru o experiență autentică.</p>
+                            <button class="order-btn" data-item="Espresso Vintage" data-price="16">Comandă Retro</button>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cappuccino Clasic">
+                        <div class="menu-item-content">
+                            <h3>Cappuccino Clasic <span class="price">20 lei</span></h3>
+                            <p>Balans perfect între espresso, lapte și spumă. Preparat după rețete tradiționale italienești.</p>
+                            <button class="order-btn" data-item="Cappuccino Clasic" data-price="20">Comandă Retro</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1561882468-9110e03e0f78?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1887" alt="Latte Artizanat">
+                        <div class="menu-item-content">
+                            <h3>Latte Artizanat <span class="price">22 lei</span></h3>
+                            <p>Latte cremos cu latte-art inspirat din arta retro. Textură seducătoare și aromă delicată.</p>
+                            <button class="order-btn" data-item="Latte Artizanat" data-price="22">Comandă Retro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ceaiuri Vintage Category -->
+            <div class="menu-category" id="ceai-vintage">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Ceai Englez">
+                        <div class="menu-item-content">
+                            <h3>Ceai Englez Vintage <span class="price">18 lei</span></h3>
+                            <p>Amestec clasic de ceaiuri negre în stil britanic. Perfect pentru după-amiezile lungi.</p>
+                            <button class="order-btn" data-item="Ceai Englez Vintage" data-price="18">Comandă Retro</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Ceai de Iarbă Sfântă">
+                        <div class="menu-item-content">
+                            <h3>Ceai de Iarbă Sfântă <span class="price">16 lei</span></h3>
+                            <p>Infuzie tradițională românească. Aromă terroasă și beneficii detoxifiante.</p>
+                            <button class="order-btn" data-item="Ceai de Iarbă Sfântă" data-price="16">Comandă Retro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialități Mad Goat Category -->
+            <div class="menu-category" id="specialitati">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1596078841242-12f73dc697c6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=464" alt="Mocha Mad Goat">
+                        <div class="menu-item-content">
+                            <h3>Mocha Mad Goat <span class="price">25 lei</span></h3>
+                            <p>Specialitatea casei! Espresso, ciocolată artizanală și un secret de familie.</p>
+                            <button class="order-btn" data-item="Mocha Mad Goat" data-price="25">Comandă Retro</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1580661869408-55ab23f2ca6e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=435" alt="Americano Retro">
+                        <div class="menu-item-content">
+                            <h3>Americano Retro <span class="price">19 lei</span></h3>
+                            <p>Espresso dublu cu apă fierbinte, servit în ceași manieră ca acum 50 de ani.</p>
+                            <button class="order-btn" data-item="Americano Retro" data-price="19">Comandă Retro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gustări Retro Category -->
+            <div class="menu-category" id="gustari">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1599940778173-e276d4acb2bb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=855" alt="Croissant Artizanal">
+                        <div class="menu-item-content">
+                            <h3>Croissant Artizanal <span class="price">12 lei</span></h3>
+                            <p>Croissant preparat după rețetă franceză veche. Pufos și cu unt de calitate.</p>
+                            <button class="order-btn" data-item="Croissant Artizanal" data-price="12">Comandă Retro</button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Plăcintă Casnică">
+                        <div class="menu-item-content">
+                            <h3>Plăcintă Casnică <span class="price">15 lei</span></h3>
+                            <p>Plăcintă după rețeta bunicii. Mere, brânză sau cartofi - la alegere.</p>
+                            <button class="order-btn" data-item="Plăcintă Casnică" data-price="15">Comandă Retro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--retro-cream);">Vino pe la noi</h2>
+                <p style="color: var(--wood-light);">O experiență retro autentică te așteaptă</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <h3 style="color: var(--retro-gold);">Găsește Capra Nebună</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adresa Retro</h4>
+                                <p>Strada Lipsei 42, Centrul Vechi, București</p>
+                                <p style="font-size: 14px; color: var(--wood-light); margin-top: 5px;">Într-o clădire istorică cu arcade</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Telefon Vintage</h4>
+                                <p>+40 721 424 242</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Scrie-ne</h4>
+                                <p>hello@madgoat.coffee</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Program Nostalgic</h4>
+                                <p>Luni - Vineri: 7:00 - 23:00</p>
+                                <p>Sâmbătă - Duminică: 8:00 - 24:00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="color: var(--retro-gold);">Rezervă o Masă Retro</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Numele tău</label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Introdu numele tău">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required placeholder="Număr de telefon">
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Data vizitei</label>
+                            <input type="date" id="date" name="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mesaj special</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Ai cerințe speciale? Aniversare? Scrie-ne..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Rezervă Masă Retro</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo" style="margin-bottom: 30px;">
+                        <div class="logo-icon">🐐</div>
+                        <div class="logo-text" style="color: var(--retro-cream);">MAD <span style="color: var(--retro-gold);">GOAT</span></div>
+                    </div>
+                    <p>Mad Goat Coffee - o călătorie retro în lumea cafelei de specialitate. Pasiune, tradiție și arome autentice într-un ambient vintage unic în București.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Navigare Retro</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#home" style="color: var(--wood-light); text-decoration: none; line-height: 2;">Acasă</a></li>
+                        <li><a href="#about" style="color: var(--wood-light); text-decoration: none; line-height: 2;">Povestea Noastră</a></li>
+                        <li><a href="#menu" style="color: var(--wood-light); text-decoration: none; line-height: 2;">Meniu Retro</a></li>
+                        <li><a href="#contact" style="color: var(--wood-light); text-decoration: none; line-height: 2;">Vizitează-ne</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Program Vintage</h3>
+                    <p style="line-height: 2;">Luni - Vineri: 7:00 - 23:00</p>
+                    <p style="line-height: 2;">Sâmbătă - Duminică: 8:00 - 24:00</p>
+                    <p style="color: var(--retro-gold); margin-top: 15px;">✨ Vinerea Retro - live music vintage!</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Mad Goat Coffee. Toate drepturile rezervate. O cafenea cu suflet.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simplified JavaScript for basic functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Menu categories
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const categories = document.querySelectorAll('.menu-category');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    categories.forEach(cat => {
+                        cat.classList.remove('active');
+                        if (cat.id === category) {
+                            cat.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // Add to cart functionality
+            let cart = [];
+            const cartCount = document.getElementById('cartCount');
+            
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    const price = this.getAttribute('data-price');
+                    
+                    // Simple cart functionality
+                    cart.push({item, price});
+                    cartCount.textContent = cart.length;
+                    
+                    // Show notification
+                    alert(`"${item}" a fost adăugat în coș!`);
+                });
+            });
+
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Mulțumim pentru rezervare! Te așteptăm la Mad Goat Coffee.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
