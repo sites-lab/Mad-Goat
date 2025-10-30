@@ -166,6 +166,121 @@
             color: var(--retro-cream);
         }
 
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 380px;
+            height: 100vh;
+            background: var(--retro-cream);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+            transition: right 0.4s ease;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            border-left: 5px solid var(--wood-dark);
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 25px;
+            border-bottom: 3px solid var(--wood-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--wood-dark);
+            color: var(--retro-cream);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--retro-cream);
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .close-cart:hover {
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 2px solid var(--wood-light);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: var(--wood-dark);
+        }
+
+        .cart-item-price {
+            color: var(--retro-red);
+            font-weight: 700;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quantity-btn {
+            background: var(--wood-light);
+            border: 2px solid var(--wood-medium);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            color: var(--wood-dark);
+        }
+
+        .quantity-btn:hover {
+            background: var(--retro-red);
+            color: var(--retro-cream);
+            border-color: var(--retro-red);
+        }
+
+        .cart-footer {
+            padding: 25px;
+            border-top: 3px solid var(--wood-light);
+            background: linear-gradient(to bottom, var(--wood-light) 0%, #E8D4B5 100%);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--wood-dark);
+        }
+
         /* Hero Section */
         .hero {
             background: 
@@ -684,6 +799,87 @@
             color: var(--wood-light);
         }
 
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            background: var(--wood-dark);
+            color: var(--retro-cream);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 3000;
+            animation: slideInRight 0.3s ease;
+            border: 2px solid var(--retro-gold);
+            max-width: 300px;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--retro-cream);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 5px solid var(--wood-dark);
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--wood-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
         /* Responsive Design */
         @media (max-width: 1100px) {
             .about-content, .contact-container {
@@ -692,6 +888,10 @@
             
             .hero h1 {
                 font-size: 48px;
+            }
+            
+            .cart-sidebar {
+                width: 350px;
             }
         }
 
@@ -733,6 +933,11 @@
                 margin-bottom: 40px;
             }
             
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
             .hero {
                 margin-top: 80px;
                 height: 70vh;
@@ -757,6 +962,38 @@
     </style>
 </head>
 <body>
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Coșul Retro</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0 lei</span>
+            </div>
+            <button class="btn" id="clearCartBtn" style="width: 100%; background: var(--retro-red); margin-bottom: 15px;">
+                <i class="fas fa-trash"></i> Golește Coșul
+            </button>
+            <button class="btn" id="checkoutBtn" style="width: 100%;">Finalizează Comanda</button>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 style="color: var(--wood-dark); margin-bottom: 20px;">Finalizează Comanda</h2>
+            <p style="margin-bottom: 20px; color: var(--retro-brown);">Îți mulțumim pentru comandă! Te așteptăm la Mad Goat Coffee pentru a-ți ridica comanda.</p>
+            <div id="orderSummary" style="margin-bottom: 20px; padding: 15px; background: rgba(139, 69, 19, 0.1); border-radius: 10px;"></div>
+            <button class="btn" id="confirmOrder" style="width: 100%;">Confirmă Comanda</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -941,7 +1178,7 @@
         <div class="container">
             <div class="section-title">
                 <h2 style="color: var(--retro-cream);">Vino pe la noi</h2>
-                <p style="color: var(--wood-light);">O experiență retro autentică te așteaptă</p>
+                <p style="color: var(--wood-light);">O experiență retro autentică te așteptă</p>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -1045,17 +1282,153 @@
     </footer>
 
     <script>
-        // Simplified JavaScript for basic functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const navLinks = document.querySelector('.nav-links');
-            
-            mobileMenu.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-            });
+        // ========== CART FUNCTIONALITY ==========
+        let cart = [];
 
-            // Menu categories
+        // Initialize cart from localStorage
+        function initCart() {
+            const savedCart = localStorage.getItem('madGoatCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartDisplay();
+            }
+        }
+
+        // Save cart to localStorage
+        function saveCart() {
+            localStorage.setItem('madGoatCart', JSON.stringify(cart));
+        }
+
+        // Add to cart function
+        function addToCart(item, price) {
+            const existingItem = cart.find(cartItem => cartItem.name === item);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: item,
+                    price: parseFloat(price),
+                    quantity: 1
+                });
+            }
+            
+            updateCartDisplay();
+            saveCart();
+            showCartNotification(item);
+            
+            // Auto-open cart on mobile devices
+            if (window.innerWidth <= 768) {
+                const cartSidebar = document.getElementById('cartSidebar');
+                cartSidebar.classList.add('active');
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+            saveCart();
+        }
+
+        // Clear entire cart
+        function clearCart() {
+            if (cart.length === 0) {
+                alert('Coșul tău este deja gol!');
+                return;
+            }
+            
+            if (confirm('Sigur dorești să golești tot coșul?')) {
+                cart = [];
+                updateCartDisplay();
+                saveCart();
+            }
+        }
+
+        // Update quantity
+        function updateQuantity(index, change) {
+            cart[index].quantity += change;
+            
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                updateCartDisplay();
+                saveCart();
+            }
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartTotal = document.getElementById('cartTotal');
+            const clearCartBtn = document.getElementById('clearCartBtn');
+            
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Update cart items
+            let html = '';
+            let total = 0;
+            
+            if (cart.length === 0) {
+                html = '<p style="text-align: center; color: #666; padding: 20px; font-style: italic;">Coșul tău este gol</p>';
+                clearCartBtn.style.display = 'none';
+            } else {
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    html += `
+                        <div class="cart-item">
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-price">${item.price} lei</div>
+                            </div>
+                            <div class="cart-item-controls">
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                                <span style="margin: 0 10px; font-weight: 600;">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                clearCartBtn.style.display = 'block';
+            }
+            
+            cartItems.innerHTML = html;
+            cartTotal.textContent = total + ' lei';
+        }
+
+        // Show cart notification
+        function showCartNotification(item) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-check" style="color: var(--retro-gold);"></i>
+                    <div>
+                        <strong>${item}</strong> a fost adăugat în coș!
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // ========== MENU CATEGORIES ==========
+        function initMenuCategories() {
             const categoryBtns = document.querySelectorAll('.category-btn');
             const categories = document.querySelectorAll('.menu-category');
             
@@ -1074,7 +1447,129 @@
                     });
                 });
             });
+        }
 
+        // ========== CART SIDEBAR ==========
+        function initCartSidebar() {
+            const cartButton = document.getElementById('cartButton');
+            const cartSidebar = document.getElementById('cartSidebar');
+            const closeCart = document.querySelector('.close-cart');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            const clearCartBtn = document.getElementById('clearCartBtn');
+            
+            cartButton.addEventListener('click', function() {
+                cartSidebar.classList.add('active');
+            });
+            
+            closeCart.addEventListener('click', function() {
+                cartSidebar.classList.remove('active');
+            });
+            
+            clearCartBtn.addEventListener('click', function() {
+                clearCart();
+            });
+            
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    alert('Coșul tău este gol! Adaugă produse în coș pentru a continua.');
+                    return;
+                }
+                
+                cartSidebar.classList.remove('active');
+                showOrderModal();
+            });
+            
+            document.addEventListener('click', function(e) {
+                if (!cartSidebar.contains(e.target) && !cartButton.contains(e.target)) {
+                    cartSidebar.classList.remove('active');
+                }
+            });
+        }
+
+        // ========== ORDER MODAL ==========
+        function showOrderModal() {
+            const modal = document.getElementById('orderModal');
+            const orderSummary = document.getElementById('orderSummary');
+            const closeModal = document.getElementById('closeModal');
+            const confirmOrder = document.getElementById('confirmOrder');
+            
+            // Build order summary
+            let summaryHTML = '<h3 style="color: var(--wood-dark); margin-bottom: 10px;">Sumar Comandă:</h3>';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                summaryHTML += `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span>${item.name} x${item.quantity}</span>
+                        <span>${itemTotal} lei</span>
+                    </div>
+                `;
+            });
+            
+            summaryHTML += `
+                <div style="display: flex; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 2px solid var(--wood-light); font-weight: bold;">
+                    <span>Total:</span>
+                    <span>${total} lei</span>
+                </div>
+            `;
+            
+            orderSummary.innerHTML = summaryHTML;
+            
+            // Show modal
+            modal.classList.add('active');
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.classList.remove('active');
+            });
+            
+            // Confirm order
+            confirmOrder.addEventListener('click', function() {
+                alert('Comanda a fost plasată cu succes! Te așteptăm la Mad Goat Coffee pentru a-ți ridica comanda.');
+                cart = [];
+                updateCartDisplay();
+                saveCart();
+                modal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize cart
+            initCart();
+            
+            // Initialize menu categories
+            initMenuCategories();
+            
+            // Initialize cart sidebar
+            initCartSidebar();
+            
+            // Mobile menu
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Add to cart buttons
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    const price = this.getAttribute('data-price');
+                    addToCart(item, price);
+                });
+            });
+            
             // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1094,25 +1589,7 @@
                     }
                 });
             });
-
-            // Add to cart functionality
-            let cart = [];
-            const cartCount = document.getElementById('cartCount');
             
-            document.querySelectorAll('.order-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const item = this.getAttribute('data-item');
-                    const price = this.getAttribute('data-price');
-                    
-                    // Simple cart functionality
-                    cart.push({item, price});
-                    cartCount.textContent = cart.length;
-                    
-                    // Show notification
-                    alert(`"${item}" a fost adăugat în coș!`);
-                });
-            });
-
             // Form submission
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
